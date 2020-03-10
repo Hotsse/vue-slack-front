@@ -27,7 +27,7 @@ export default function ({ store, redirect }) {
       var params = new FormData()
       params.append('token', token)
 
-      axios.post(`http://vlack-api.hotsse.me:8080/employee/getSession`, params)
+      axios.post(`${process.env.axiosBaseUrl}/employee/getSession`, params)
         .then((res) => {
 
           if(res.data == ""){
