@@ -89,7 +89,7 @@ export default {
   methods: {    
     getAuthedProjects () {   
 
-      this.$axios.get(`http://vlack-api.hotsse.me:8080/project/getAuthedProjects`)
+      this.$axios.get(`/project/getAuthedProjects`)
         .then((res) => {
           this.projects = res.data
           this.issue.projectKey = this.projects[0].key       
@@ -104,7 +104,7 @@ export default {
       params.append('description', this.issue.description)
       params.append('dueDt', this.issue.dueDt)
 
-      this.$axios.post(`http://vlack-api.hotsse.me:8080/issue/createIssue`, params)
+      this.$axios.post(`/issue/createIssue`, params)
         .then((res) => {
           window.location.reload()
         })
@@ -123,7 +123,7 @@ export default {
       this.issue.dueDt = null
     },
     getEmployee () {
-      this.$axios.get(`http://vlack-api.hotsse.me:8080/employee/getEmployeeByNm?keyword=${this.empNm}`)
+      this.$axios.get(`/employee/getEmployeeByNm?keyword=${this.empNm}`)
         .then((res) => {
           this.employees = res.data          
         })
