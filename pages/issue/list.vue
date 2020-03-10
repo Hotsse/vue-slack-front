@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     getIssues() {
-      this.$axios.get(`http://vlack-api.hotsse.me:8080/issue/getIssues?projectKey=TESTPJ`)
+      this.$axios.get(`/issue/getIssues?projectKey=TESTPJ`)
         .then((res) => {
           this.issues = res.data          
         })

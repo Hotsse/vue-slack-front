@@ -41,7 +41,7 @@ export default {
       params.append('empId', this.empId)
       params.append('empPw', this.empPw)
 
-      this.$axios.post(`http://vlack-api.hotsse.me:8080/employee/login`, params)
+      this.$axios.post(`/employee/login`, params)
         .then((res) => {
           if(res.data == "") {
             alert("일치하는 계정이 없습니다")

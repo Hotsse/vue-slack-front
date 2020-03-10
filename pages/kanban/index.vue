@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     loadWorkflows () {
-      this.$axios.get(`http://vlack-api.hotsse.me:8080/workflow/getWorkflows?projectKey=TESTPJ`)
+      this.$axios.get(`/workflow/getWorkflows?projectKey=TESTPJ`)
         .then((res) => {
           res.data.forEach((element)=>{
             var workflow = new WorkflowVO()
@@ -67,7 +67,7 @@ export default {
     loadIssues () {
 
       for(let i=0; i<this.workflows.length; i++){
-        this.$axios.get(`http://vlack-api.hotsse.me:8080/issue/getIssuesByWorkflowId?projectKey=TESTPJ&workflowId=${this.workflows[i].id}`)
+        this.$axios.get(`/issue/getIssuesByWorkflowId?projectKey=TESTPJ&workflowId=${this.workflows[i].id}`)
           .then((res) => {
             this.workflows[i].issues = res.data
           })
@@ -83,7 +83,7 @@ export default {
       params.append('id', dsItem.issueId)
       params.append('workflowId', dsTarget.workflowId)
 
-      this.$axios.post(`http://vlack-api.hotsse.me:8080/issue/updateIssue`, params)
+      this.$axios.post(`/issue/updateIssue`, params)
         .then(function (res) {
           console.log(res.data)
         })
