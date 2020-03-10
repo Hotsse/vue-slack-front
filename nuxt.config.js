@@ -1,4 +1,8 @@
-export default {
+require('dotenv').config({
+  path: './environments/' + ((process.env.profile != undefined) ? `.env.${process.env.profile}` : '.env.local')
+})
+
+export default {  
   mode: 'spa',
   message: process.env.message,
   profile: process.env.profile,
@@ -43,21 +47,21 @@ export default {
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'    
+    '@nuxtjs/axios'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'http://183.110.51.59:8080'
+    baseURL: process.env.axiosBaseUrl
   },
   /**/
   dotenv: {
     path: './environments/',
-    filename: (process.env.profile != undefined) ? `env.${process.env.profile}` : 'env.local',
+    filename: (process.env.profile != undefined) ? `.env.${process.env.profile}` : '.env.local',
     systemvars: true
-  },
+  },  
   /*
   ** Build configuration
   */
@@ -66,6 +70,9 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      config.node = {
+        fs: 'empty'
+      }
     }
   }
 }
