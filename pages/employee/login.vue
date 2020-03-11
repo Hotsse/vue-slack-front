@@ -1,5 +1,9 @@
 <template>
   <b-container fluid>
+    <!-- logo -->
+    <b-jumbotron header="Test Slack" lead="Nuxt.js 기술 분석용 프로젝트">
+      <p>empId : AD계정 / empPw : 1234</p>
+    </b-jumbotron>
     <!-- empId -->
     <b-row class="my-1">
       <b-col sm="2">
@@ -26,8 +30,13 @@
 </template>
 
 <script>
+import loginLogo from '@/components/LoginLogo.vue'
+
 export default {
   layout: 'empty',
+  components: {
+    loginLogo
+  },
   data() {
     return {
       empId: null,
@@ -41,15 +50,16 @@ export default {
       params.append('empId', this.empId)
       params.append('empPw', this.empPw)
 
-      this.$axios.post(`/employee/login`, params)
+      this.$axios.post(`/employee/login`, params, {
+        withCredentials: true
+        })
         .then((res) => {
           if(res.data == "") {
             alert("일치하는 계정이 없습니다")
           }
           else{
             console.log(res.data)
-            document.cookie = `token=${res.data.token}`
-            
+
             var empInfo = {
               empNo: res.data.empNo,
               empNm: res.data.empNm

@@ -53,7 +53,11 @@ export default {
   },
   methods: {
     logout() {
-      document.cookie="token="
+      this.$cookies.set("accessToken", null, {
+        path: '/',
+        domain: '.hotsse.me',
+        maxAge: 0
+      });
       this.$store.commit('setEmpInfo', null)
       this.$router.push('/employee/login')
     }

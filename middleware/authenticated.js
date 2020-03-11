@@ -1,36 +1,25 @@
-export default function ({ app, store, redirect }) {
+export default function ({ app, store, redirect, isServer }) {
 
   // If the user is not authenticated
   if (!store.state.empInfo) {
 
-    var cname = "token"
-    var token = ""
+    const accessToken = app.$cookies.get('accessToken')
 
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        token = c.substring(name.length, c.length);
-      }
-    }
-
-    if(token == ""){
+    if(accessToken == ""){
       return redirect('/employee/login')
     }
 
-    var params = new FormData()
-    params.append('token', token)
-
-    app.$axios.post('/employee/getSession', params)
+    app.$axios.post('/employee/isValidToken', null, {      
+      headers: {Authorization: accessToken}
+    })
       .then((res) => {
 
-        if(res.data == ""){
-          document.cookie="token=";
+        if(res.data == "") {
+          app.$cookies.set("accessToken", null, {
+            path: '/',
+            domain: '.hotsse.me',
+            maxAge: 0
+          });
           return redirect('/employee/login')
         }
 
