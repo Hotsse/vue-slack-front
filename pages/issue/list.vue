@@ -1,5 +1,8 @@
 <template>
   <b-container fluid>
+    <b-jumbotron>
+      <template v-slot:header>Issues</template>
+    </b-jumbotron>
     <b-row>
       <b-table hover :items="issues" :fields="fields" @row-clicked="routeToDetail"></b-table>
     </b-row>

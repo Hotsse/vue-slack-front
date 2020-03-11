@@ -1,8 +1,8 @@
 <template>
   <b-container fluid>
-    <b-row style="margin-top:15px;">
-      <h1>Kanban Board</h1>
-    </b-row>
+    <b-jumbotron>
+      <template v-slot:header>Kanban Board</template>
+    </b-jumbotron>
     <b-row class="title">
       <b-col v-for="workflow in workflows" :key="workflow.id">
         <h6>{{ workflow.title }}</h6>

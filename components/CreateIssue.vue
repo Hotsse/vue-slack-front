@@ -42,7 +42,7 @@
           담당자
         </b-col>
         <b-col sm="9">
-          <b-form-input list="employees" v-model="empNm" @keyup="getEmployee"></b-form-input>
+          <b-form-input list="employees" v-model="empNm" @keyup="getEmployee" disabled placeholder="개발 중"></b-form-input>
           <datalist id="employees">
             <option v-for="employee in employees" v-bind:key="employee.empNo">{{ employee.empNm }}</option>
           </datalist>

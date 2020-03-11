@@ -1,7 +1,15 @@
 <template>
   <b-container fluid>
     <!-- logo -->
-    <b-jumbotron header="Test Slack" lead="Nuxt.js 기술 분석용 프로젝트">
+    <b-jumbotron>
+      <template v-slot:header>
+        Test Slack <login-logo />
+      </template>
+      
+      <template v-slot:lead>
+        Nuxt.js 기술 분석용 프로젝트
+      </template>
+      <hr class="my-4">
       <p>empId : AD계정 / empPw : 1234</p>
     </b-jumbotron>
     <!-- empId -->

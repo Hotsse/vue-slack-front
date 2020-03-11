@@ -10,7 +10,7 @@
           <b-nav-item to="/issue/list">Issue</b-nav-item>
         </b-navbar-nav>
 
-        <CreateIssue />
+        <create-issue />
         
         <b-navbar-nav class="ml-auto">
           <!--
