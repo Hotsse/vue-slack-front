@@ -20,7 +20,7 @@
           </b-nav-form>
           -->
 
-          <b-nav-item-dropdown right v-if="$store.state.empInfo == null">
+          <b-nav-item-dropdown right v-if="$store.state.profile == null">
             <template v-slot:button-content>
               <em>User</em>
             </template>
@@ -29,7 +29,7 @@
           </b-nav-item-dropdown>
           <b-nav-item-dropdown right v-else>
             <template v-slot:button-content>
-              <em>{{ $store.state.empInfo.empNm }}</em>
+              <em>{{ $store.state.profile.EMPName }}</em>
             </template>
             <b-dropdown-item href="javascript:;">Profile</b-dropdown-item>
             <b-dropdown-item href="javascript:;" @click="logout">Sign Out</b-dropdown-item>
@@ -53,6 +53,7 @@ export default {
   },
   methods: {
     logout() {
+      /*
       this.$cookies.set("accessToken", null, {
         path: '/',
         domain: '.hotsse.me',
@@ -60,6 +61,14 @@ export default {
       });
       this.$store.commit('setEmpInfo', null)
       this.$router.push('/employee/login')
+      */
+     this.$cookies.set("accessToken", null, {
+        path: '/',
+        domain: '.weboffice.co.kr',
+        maxAge: 0
+      });
+      this.$store.commit('setProfile', null)
+      this.$router.push('/employee/oauth')
     }
   }
 }

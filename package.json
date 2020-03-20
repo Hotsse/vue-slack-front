@@ -5,10 +5,10 @@
   "author": "Hotsse",
   "private": true,
   "scripts": {
-    "local": "cross-env profile=local nuxt",
-    "build-dev": "cross-env profile=dev nuxt build",
-    "build-stage": "cross-env profile=stage nuxt build",
-    "build-live": "cross-env profile=live nuxt build",
+    "local": "cross-env profile=local PORT=8080 nuxt",
+    "build-dev": "cross-env profile=dev PORT=8080 nuxt build",
+    "build-stage": "cross-env profile=stage PORT=8080 nuxt build",
+    "build-live": "cross-env profile=live PORT=8080 nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
   },
