@@ -68,7 +68,7 @@ export default {
         maxAge: 0
       });
       this.$store.commit('setProfile', null)
-      this.$router.push('/employee/oauth')
+      window.location.href="https://dev-nosts.nexon.com/oauth/signout?returnUrl=http://local.msign.weboffice.co.kr:8080/logout"
     }
   }
 }
