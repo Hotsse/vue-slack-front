@@ -56,7 +56,11 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: process.env.axiosBaseUrl
+    baseURL: process.env.axiosBaseUrl,
+    headers: {
+      'key1': 'value1',
+      'key2': 'value2'
+    }
   },
   /**/
   dotenv: {
